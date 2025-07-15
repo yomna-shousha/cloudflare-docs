@@ -1,0 +1,48 @@
+---
+title: "Stable branch-based preview aliases now available for Cloudflare Workers"
+description: "Automatic preview aliases for Worker deployments, enabling improved preview flows and pull request collaboration"
+products:
+  - workers
+date: "2025-07-16T01:00:00Z"
+---
+
+We are introducing **automatic preview aliases for Cloudflare Workers**, now available in public beta.
+
+Just like in Pages, each pull request now includes a comment with a **stable, aliased preview URL** based on the branch name. The URL stays the same with every commit and always points to the latest version of that branch, making it easier to test, share, and collaborate on changes.
+
+This is another step toward bringing full feature parity between Pages and Workers.
+
+## How it works
+
+When you create a pull request:
+
+- **A preview alias is automatically created** based on the Git branch name (e.g., `<branch-name>` becomes `<branch-name>-<worker-name>.<subdomain>.workers.dev`)
+- **No configuration is needed**, the alias is generated for you
+- **Preview URLs are posted directly to PR comments** just like in Pages
+
+![PR comment preview](images/comment.png)
+
+## Preview URL types
+
+Each PR comment includes **two preview URLs** as shown above:
+
+* **Commit Preview URL**: Unique to the specific version/commit (e.g., `<version-prefix>-<worker-name>.<subdomain>.workers.dev`) 
+* **Branch Preview URL**: A stable alias based on the branch name (e.g., `<branch-name>-<worker-name>.<subdomain>.workers.dev`)
+
+## Custom alias name
+
+You can still assign a custom preview alias using the Wrangler CLI:
+
+```bash
+wrangler versions upload --preview-alias staging
+```
+
+## Current limitations
+
+* Only available on the **workers.dev** subdomain (custom domains not yet supported)
+* A maximum of **20 aliases per Worker** are retained (least recently used aliases are automatically removed)
+* Requires **Wrangler v4.21.0+**
+* Not generated for Workers that use **Durable Objects** 
+* Not yet supported for **Workers for Platforms** 
+
+We are actively refining the experience. Stay tuned as we continue expanding preview and collaboration workflows.
