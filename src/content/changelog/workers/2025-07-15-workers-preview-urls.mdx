@@ -1,21 +1,21 @@
 ---
-title: "Test your code changes instantly with automatic preview URLs for Cloudflare Workers"
-description: "Get shareable preview links for every code change, making it easier to test and collaborate before going live"
+title: Test your code changes instantly with per-branch preview deployments for Cloudflare Workers
+description: Get shareable preview links for every code change you make to a Cloudflare Worker, making it easier to test and collaborate before going live
 products:
   - workers
 date: 2025-07-22T01:00:00Z
 ---
 
-We are introducing automatic aliased preview URLs for Cloudflare Workers, now available in public beta.
+Now, when you connect your Cloudflare Worker to a git repository on GitHub or GitLab, each branch of your repository has its own stable preview URL, that you can use to preview code changes before merging the pull request and deploying to production.
 
-What this means: Just like Pages, every time you make code changes and create a pull request, you'll automatically get a shareable preview link where you can see your changes running, without affecting production.
+This works the same way that Cloudflare Pages does — every time you create a pull request, you'll automatically get a shareable preview link where you can see your changes running, without affecting production. The link stays the same, even as you add commits to the same branch.
 These preview URLs are named after your branch and are posted as a comment to each pull request. The URL stays the same with every commit and always points to the latest version of that branch.
 
 ![PR comment preview](images/comment.png)
 
 ## Preview URL types
 
-Each PR comment includes **two preview URLs** as shown above:
+Each comment includes **two preview URLs** as shown above:
 
 * **Commit Preview URL**: Unique to the specific version/commit (e.g., `<version-prefix>-<worker-name>.<subdomain>.workers.dev`) 
 * **Branch Preview URL**: A stable alias based on the branch name (e.g., `<branch-name>-<worker-name>.<subdomain>.workers.dev`)
@@ -26,23 +26,21 @@ When you create a pull request:
 
 - **A preview alias is automatically created** based on the Git branch name (e.g., `<branch-name>` becomes `<branch-name>-<worker-name>.<subdomain>.workers.dev`)
 - **No configuration is needed**, the alias is generated for you
-- **The link stays the same** even as you make more commits
-- **Preview URLs are posted directly to PR comments** just like in Pages
+- **The link stays the same** even as you add commits to the same branch
+- **Preview URLs are posted directly to your pull request as comments** (just like they are in Cloudflare Pages)
 
 ## Custom alias name
 
-You can still assign a custom preview alias using the Wrangler CLI:
+You can also assign a custom preview alias using the [Wrangler CLI](/workers/wrangler/), by passing the `--preview-alias` flag when [uploading a version](/workers/wrangler/commands/#upload) of your Worker:
 
 ```bash
 wrangler versions upload --preview-alias staging
 ```
 
-## Current limitations
+## Limitations while in beta
 
 * Only available on the **workers.dev** subdomain (custom domains not yet supported)
 * A maximum of **20 aliases per Worker** are retained (least recently used aliases are automatically removed)
 * Requires **Wrangler v4.21.0+**
-* Not generated for Workers that use **Durable Objects** 
-* Not yet supported for **Workers for Platforms** 
-
-This brings Workers in line with our Pages platform, where preview URLs have been highly useful for developer workflows. Stay tuned as we continue expanding preview and collaboration workflows on Workers.
+* Preview URLs are not generated for Workers that use [Durable Objects](/durable-objects/) 
+* Not yet supported for [Workers for Platforms](/cloudflare-for-platforms/workers-for-platforms/)
