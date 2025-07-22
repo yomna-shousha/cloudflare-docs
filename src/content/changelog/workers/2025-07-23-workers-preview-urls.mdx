@@ -3,7 +3,7 @@ title: Test your code changes instantly with per-branch preview deployments for 
 description: Get shareable preview links for every code change you make to a Cloudflare Worker, making it easier to test and collaborate before going live
 products:
   - workers
-date: 2025-07-22T01:00:00Z
+date: 2025-07-23T01:00:00Z
 ---
 
 Now, when you connect your Cloudflare Worker to a git repository on GitHub or GitLab, each branch of your repository has its own stable preview URL, that you can use to preview code changes before merging the pull request and deploying to production.
@@ -40,7 +40,6 @@ wrangler versions upload --preview-alias staging
 ## Limitations while in beta
 
 * Only available on the **workers.dev** subdomain (custom domains not yet supported)
-* A maximum of **20 aliases per Worker** are retained (least recently used aliases are automatically removed)
 * Requires **Wrangler v4.21.0+**
 * Preview URLs are not generated for Workers that use [Durable Objects](/durable-objects/) 
 * Not yet supported for [Workers for Platforms](/cloudflare-for-platforms/workers-for-platforms/)
