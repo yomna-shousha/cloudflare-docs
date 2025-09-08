@@ -2,7 +2,7 @@
 title: Increased vCPU for Workers Builds on paid plans
 description: Increased the available vCPU for Workers Builds from 2 to 4 vCPUs for paid plans, improving build performance and parallel processing capabilities.
   - workers
-date: 2025-09-07
+date: 2025-09-11
 ---
 We recently [increased the available disk space](/changelog/2025-08-04-builds-increased-disk-size/) from 8 GB to 20 GB for **all** plans. Building on that improvement, we’re now doubling the CPU power available for paid plans — from 2 vCPU to **4 vCPU**.  
 
@@ -14,6 +14,6 @@ These changes continue our focus on making [Workers Builds](/workers/ci-cd/build
 
 ## What you get
 - **Fast build times**: Even single-threaded workloads benefit from having more vCPUs
-- **Better parallel processing**: Multi-threaded tools and processes can now utilize more cores  
+- **Better parallel processing**: Multi-threaded tools and processes (for example, [esbuild](https://esbuild.github.io/)) can now utilize more cores  
 
 All other [build limits](/workers/ci-cd/builds/limits-and-pricing/) — including memory, build minutes, and timeout remain unchanged.
