@@ -1,0 +1,63 @@
+---
+title: Interactive deployment flow for static assets in Wrangler
+description: Wrangler now guides you through deploying static assets with interactive prompts and automatic configuration generation when no wrangler.jsonc file exists.
+products:
+  - workers
+date: 2025-09-09
+---
+
+Deploying static assets to Workers is now significantly easier. When you run `wrangler deploy [directory]` or `wrangler deploy --assets [directory]` without an existing configuration file, Wrangler will now guide you through the deployment process with interactive prompts.
+
+## What's new
+
+**Interactive prompts for missing configuration:**
+- Wrangler detects when you're trying to deploy a directory of static assets
+- Prompts you to confirm the deployment type
+- Asks for a project name (with smart defaults)
+- Automatically sets the compatibility date to today
+
+**Automatic configuration generation:**
+- Creates a `wrangler.jsonc` file with your deployment settings
+- Stores your choices for future deployments
+- Eliminates the need to remember complex command-line flags
+
+## Example workflow
+
+```bash
+# Deploy your built static site
+wrangler deploy dist
+
+# Wrangler will prompt:
+✔ It looks like you are trying to deploy a directory of static assets only. Is this correct? … yes
+✔ What do you want to name your project? … my-astro-site
+
+# Automatically generates wrangler.jsonc:
+{
+  "name": "my-astro-site",
+  "compatibility_date": "2025-09-09",
+  "assets": {
+    "directory": "dist"
+  }
+}
+
+# Future deployments are now simplified:
+wrangler deploy
+```
+
+## Before and after
+
+**Before:** Required remembering multiple flags and parameters
+```bash
+wrangler deploy --assets ./dist --compatibility-date 2025-09-09 --name my-project
+```
+
+**After:** Simple directory deployment with guided setup
+```bash
+wrangler deploy dist
+# Interactive prompts handle the rest as shown in the example flow above
+```
+
+## Requirements
+
+- **Wrangler 4.24.4 or higher** is required for this functionality
+
