@@ -1,12 +1,12 @@
 ---
-title: Interactive deployment flow for static assets in Wrangler
+title: Deploy static sites to Workers without a configuration file
 description: Wrangler now guides you through deploying static assets with interactive prompts and automatic configuration generation when no wrangler.jsonc file exists.
 products:
   - workers
 date: 2025-09-09
 ---
 
-Deploying static assets to Workers is now significantly easier. When you run `wrangler deploy [directory]` or `wrangler deploy --assets [directory]` without an existing configuration file, Wrangler will now guide you through the deployment process with interactive prompts.
+Deploying static site to Workers is now easier. When you run `wrangler deploy [directory]` or `wrangler deploy --assets [directory]` without an existing [configuration file](/workers/wrangler/configuration/), [Wrangler CLI](/workers/wrangler/) now guides you through the deployment process with interactive prompts.
 
 ## What's new
 
@@ -31,7 +31,7 @@ wrangler deploy dist
 ✔ It looks like you are trying to deploy a directory of static assets only. Is this correct? … yes
 ✔ What do you want to name your project? … my-astro-site
 
-# Automatically generates wrangler.jsonc:
+# Automatically generates a wrangler.jsonc file and adds it to your project:
 {
   "name": "my-astro-site",
   "compatibility_date": "2025-09-09",
@@ -40,7 +40,7 @@ wrangler deploy dist
   }
 }
 
-# Future deployments are now simplified:
+# Next time you run wrangler deploy, this will use the configuration in your newly generated wrangler.jsonc file
 wrangler deploy
 ```
 
@@ -59,5 +59,5 @@ wrangler deploy dist
 
 ## Requirements
 
-- **Wrangler 4.24.4 or higher** is required for this functionality
+- You must use Wrangler version 4.24.4 or later in order to use this feature
 
