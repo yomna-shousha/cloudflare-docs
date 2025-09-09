@@ -8,6 +8,19 @@ date: 2025-09-09
 
 Deploying static site to Workers is now easier. When you run `wrangler deploy [directory]` or `wrangler deploy --assets [directory]` without an existing [configuration file](/workers/wrangler/configuration/), [Wrangler CLI](/workers/wrangler/) now guides you through the deployment process with interactive prompts.
 
+## Before and after
+
+**Before:** Required remembering multiple flags and parameters
+```bash
+wrangler deploy --assets ./dist --compatibility-date 2025-09-09 --name my-project
+```
+
+**After:** Simple directory deployment with guided setup
+```bash
+wrangler deploy dist
+# Interactive prompts handle the rest as shown in the example flow above
+```
+
 ## What's new
 
 **Interactive prompts for missing configuration:**
@@ -42,19 +55,6 @@ wrangler deploy dist
 
 # Next time you run wrangler deploy, this will use the configuration in your newly generated wrangler.jsonc file
 wrangler deploy
-```
-
-## Before and after
-
-**Before:** Required remembering multiple flags and parameters
-```bash
-wrangler deploy --assets ./dist --compatibility-date 2025-09-09 --name my-project
-```
-
-**After:** Simple directory deployment with guided setup
-```bash
-wrangler deploy dist
-# Interactive prompts handle the rest as shown in the example flow above
 ```
 
 ## Requirements
